@@ -1,25 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./tailwind/tailwind.css";
+import { Layout, Home, Category, Wrapper, SinglePost, NotFound } from "./pages";
+import { Route, BrowserRouter as Router } from "react-router-dom";
+import HomeWrapper from "./pages/HomeWrapper";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Layout>
+        <Route path="/category/:slug">
+          <Wrapper prefix="category-">
+            <Category />
+          </Wrapper>
+        </Route>
+        <Route path="/404">
+          <NotFound />
+        </Route>
+        <Route path="/:slug">
+          <Wrapper>
+            <SinglePost />
+          </Wrapper>
+        </Route>
+        <Route path="/" exact>
+          <HomeWrapper>
+            <Home />
+          </HomeWrapper>
+        </Route>
+      </Layout>
+    </Router>
   );
 }
 

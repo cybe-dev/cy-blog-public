@@ -1,0 +1,128 @@
+@keyframes widthAnimation {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes slidein {
+  from {
+    width: 0;
+  }
+  to {
+    width: 90%;
+  }
+}
+@keyframes slideout {
+  from {
+    width: 90%;
+  }
+  to {
+    width: 0;
+  }
+}
+@keyframes slideoutfull {
+  0% {
+    opacity: 1;
+    width: 100%;
+  }
+  90% {
+    opacity: 0;
+    width: 100%;
+  }
+  100% {
+    opacity: 0;
+    width: 0;
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.slide-in {
+  overflow: hidden;
+  animation: slidein 0.2s linear forwards;
+}
+.slide-out {
+  overflow: hidden;
+  animation: slideout 0.2s linear forwards;
+}
+.slide-in-fast {
+  overflow: hidden;
+  width: 100%;
+}
+.slide-out-fast {
+  overflow: hidden;
+  animation: slideoutfull 0.3s linear forwards;
+}
+
+@variants hover {
+  .underline-animation {
+    position: relative;
+    padding: 5px 0;
+  }
+
+  .underline-animation:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    content: " ";
+    padding: 1px;
+    animation: widthAnimation 0.2s linear forwards;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap");
+
+.bebas {
+  font-family: "Bebas Neue";
+}
+.roboto {
+  font-family: "Roboto";
+}
+a:focus,
+a:active,
+button:focus,
+button:active,
+input:focus,
+input:active {
+  outline: none !important;
+}
+
+.title:after {
+  content: "";
+  height: 3px;
+  background-color: #333;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  margin-top: 15px;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotation {
+  animation: rotate 2s linear infinite;
+}
+
+.image-cover {
+  object-fit: cover;
+}
+
+.breadcrumb-list + .breadcrumb-list:before {
+  margin: 0 5px 0 10px;
+  content: "/\00a0";
+}
